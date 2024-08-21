@@ -32,13 +32,15 @@ def check_colour_regions(board, size, regions):
             if board[row][col] == "Q":
                 colour_counts[regions[row][col]] += 1
 
-    for region, count in colour_counts.items():
+    for _, count in colour_counts.items():
+        # only one queen allowed per region
         if count > 1:
             return False
     return True
 
 
 def solveLinkedInQueens(board, row, board_size, regions):
+    # recursive backtracking algorithm
     if row >= board_size:
         return check_colour_regions(board, board_size, regions)
 
@@ -47,6 +49,7 @@ def solveLinkedInQueens(board, row, board_size, regions):
             board[row][col] = "Q"
             if solveLinkedInQueens(board, row + 1, board_size, regions):
                 return True
+            # if no solution exists with this move, undo and retry a new move
             board[row][col] = "0"
     return False
 
@@ -61,6 +64,7 @@ if __name__ == "__main__":
 
     board = [['0' for _ in range(board_size)] for _ in range(board_size)]
 
+    # board from 21/08/2024
     board_colours = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'b'],
                      ['a', 'a', 'a', 'c', 'c', 'c', 'b', 'b', 'b'],
                      ['a', 'a', 'c', 'c', 'd', 'c', 'c', 'b', 'b'],
