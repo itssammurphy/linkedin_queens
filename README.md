@@ -17,3 +17,9 @@ In the event that no legal square exists in that row given the current board sta
 Once a queen has been placed in every row, we check if the colour region rules are obeyed. If so, we have the solution. If not, we backtrack again.
 
 ## Archive
+
+21-08-2024
+
+20-08-2024
+
+19-08-2024
