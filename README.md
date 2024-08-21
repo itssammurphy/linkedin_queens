@@ -1,6 +1,6 @@
 # LinkedIn Queens Solver
 
-## The Game
+## The Game - [Link](https://lnkd.in/queens)
 
 An `n x n` chess board contains cells belonging to colour regions.
 
