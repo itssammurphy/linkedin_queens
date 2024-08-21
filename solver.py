@@ -1,3 +1,8 @@
+from boards import boards_archive
+
+DEFAULT_BOARD_DATE = "21-08-2024"
+
+
 def is_safe(board, row, col, board_size):
 
     # check if a queen is in the same column as the given cell
@@ -60,20 +65,17 @@ def print_board(board):
 
 
 if __name__ == "__main__":
-    board_size = 9
+    board_date = "19-08-2024"
 
+    try:
+        board_colours = boards_archive[board_date]
+    except KeyError:
+        print(f"Board for that date not archived, defaulting to {
+              DEFAULT_BOARD_DATE}")
+        board_colours = boards_archive[DEFAULT_BOARD_DATE]
+
+    board_size = len(board_colours)
     board = [['0' for _ in range(board_size)] for _ in range(board_size)]
-
-    # board from 21/08/2024
-    board_colours = [['a', 'a', 'a', 'a', 'a', 'a', 'a', 'b', 'b'],
-                     ['a', 'a', 'a', 'c', 'c', 'c', 'b', 'b', 'b'],
-                     ['a', 'a', 'c', 'c', 'd', 'c', 'c', 'b', 'b'],
-                     ['a', 'c', 'c', 'd', 'd', 'd', 'c', 'c', 'b'],
-                     ['a', 'c', 'd', 'd', 'd', 'e', 'e', 'c', 'b'],
-                     ['f', 'c', 'c', 'd', 'e', 'e', 'c', 'c', 'b'],
-                     ['f', 'g', 'c', 'c', 'e', 'c', 'c', 'h', 'i'],
-                     ['f', 'g', 'f', 'c', 'c', 'c', 'h', 'h', 'i'],
-                     ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'i', 'i']]
 
     solveLinkedInQueens(board, 0, board_size, board_colours)
 
